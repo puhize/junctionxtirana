@@ -237,7 +237,9 @@ ALTER TABLE `task_comments`
 ALTER TABLE `time_tracking`
   ADD CONSTRAINT `time_tracking_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`),
   ADD CONSTRAINT `time_tracking_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `users` (`id`);
+ALTER TABLE `users` MODIFY `role` ENUM('admin','manager','employee') DEFAULT 'employee';
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
