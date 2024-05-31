@@ -1,21 +1,33 @@
-
 <?php
 session_start();
 
-
-require "./database/config.php";
+require ("../config/config.php");
+include('index.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
-    $email = $_POST["inputEmail"];
-    $password = $_POST["inputPassword"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-    $sql = "SELECT * FROM users WHERE Email=:email";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":email", $email);
-    $stmt->execute();
-    $user = $stmt->fetch();
-    header("Location: index.php");
-    exit();
+    try {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            if (password_verify($password, $user['password'])) {
+                header("Location: index.php");
+                exit();
+            } else {
+                echo "Invalid email or password";
+            }
+        } else {
+            echo "Invalid email or password";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 } else {
     echo "Invalid email or password";
 }

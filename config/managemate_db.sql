@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2024 at 10:18 PM
+-- Generation Time: Jun 01, 2024 at 12:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -108,9 +108,16 @@ CREATE TABLE `users` (
   `surname` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('admin','manager','employee','') NOT NULL,
+  `role` enum('admin','manager','employee','') NOT NULL DEFAULT 'employee',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `role`, `created_at`) VALUES
+(1, 'admin', 'admin', 'admin@gmail.com', 'admin123', 'employee', '2024-05-31 22:07:31');
 
 --
 -- Indexes for dumped tables
@@ -198,7 +205,7 @@ ALTER TABLE `time_tracking`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -237,9 +244,7 @@ ALTER TABLE `task_comments`
 ALTER TABLE `time_tracking`
   ADD CONSTRAINT `time_tracking_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`),
   ADD CONSTRAINT `time_tracking_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `users` (`id`);
-ALTER TABLE `users` MODIFY `role` ENUM('admin','manager','employee') DEFAULT 'employee';
 COMMIT;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
