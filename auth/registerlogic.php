@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
         if ($existingUser) {
             $_SESSION['errorMsg'] = "Email is already registered. Please use a different email.";
-            // Disable the submit button using JavaScript
 
         } else {
             $sql = "INSERT INTO users (name, surname, email, password) VALUES (:name, :surname, :email, :password)";
@@ -34,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             $stmt->bindParam(":password", $hashedPassword);
 
             if ($stmt->execute()) {
-                header("Location: ../index.php");
+                header("Location: index.php");
                 exit();
             } else {
                 $_SESSION['errorMsg'] = "Error: Unable to register. Please try again.";
