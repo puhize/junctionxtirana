@@ -16,4 +16,6 @@ if (isset($_GET['id'])) {
 } else {
     die("ID not specified.");
 }
+
+header("Location: task_m.php");
 ?>
