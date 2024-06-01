@@ -65,6 +65,13 @@ try {
               <p>Third Item</p>
             </a>
           </li>
+          <li class="nav-item">
+
+            <a class="nav-link" href="../auth/logout-logic.php">
+              <i class="nc-icon nc-button-power"></i>
+              <p>Logout</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -113,6 +120,7 @@ try {
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
+
             </ul>
           </div>
         </div>
