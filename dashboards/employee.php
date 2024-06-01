@@ -1,9 +1,6 @@
 <?php 
-// session_start();
-// require_once '../config/config.php';
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
+
+require_once '../config/config.php';
 
 if(!isset($_SESSION['user'])){
     header("Location: ../auth/index.php");
@@ -11,6 +8,7 @@ if(!isset($_SESSION['user'])){
 }
 
 $user = $_SESSION['user'];
+
 
 if($user['role']=='manager'){
     $sql = "SELECT * from tasks";
@@ -25,7 +23,5 @@ if($user['role']!='manager'){
 }
 $stmt->execute();
 $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-include '../views/employee_dashboard.php';
 
 ?>
