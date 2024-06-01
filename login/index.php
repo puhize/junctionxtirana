@@ -20,7 +20,6 @@
 
         <input class="button" type="submit" name="submit" value="Create Account">
       </form>
-
     </div>
 
     <!--LOG IN-->

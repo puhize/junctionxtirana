@@ -2,7 +2,6 @@
 session_start();
 
 require ("../config/config.php");
-include('index.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $email = $_POST["email"];
@@ -17,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
-                header("Location: index.php");
+                header("Location: ../index.php");
                 exit();
             } else {
                 echo "Invalid email or password";
