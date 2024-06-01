@@ -1,23 +1,11 @@
 <?php
-class DatabaseConnection {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = ""; // Leave this empty
-    private $dbname = "managemate_db"; 
-
-    public function startConnection() {
-        try {
-            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $conn;
-        } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
-            return null;
-        }
-    }
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "managemate_db";
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+  echo "Connected successfully";
+} catch (PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
 }
-
-// Initialize the connection
-$database = new DatabaseConnection();
-$conn = $database->startConnection();
-?>

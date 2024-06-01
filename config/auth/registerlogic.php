@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-require("../config/config.php");
+require "../config/config.php";
+include('index.php');
 
 // Initialize error message variable
 $errorMsg = '';
@@ -12,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
+    // Hash the password before storing it
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     try {
@@ -34,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             $stmt->bindParam(":password", $hashedPassword);
 
             if ($stmt->execute()) {
-                header("Location: ../index.php");
+                // Redirect after successful registration
+                header("Location: index.php");
                 exit();
             } else {
                 $_SESSION['errorMsg'] = "Error: Unable to register. Please try again.";

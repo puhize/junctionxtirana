@@ -39,6 +39,7 @@ require "../config/config.php";
 
         <input class="button" id="createaccount" type="submit" name="submit" value="Create Account">
       </form>
+
     </div>
 
     <!--LOG IN-->
