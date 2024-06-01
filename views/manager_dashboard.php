@@ -60,15 +60,15 @@ if ($columnInfo) {
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active ">
-                        <a href="javascript:;">
+                    <li>
+                        <a href="">
                             <i class="nc-icon nc-paper"></i>
 
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="m-d.php">
+                    <li class="active ">
+                        <a href="javascript:;">
                             <i class="nc-icon nc-watch-time"></i>
                             <p>Tasks</p>
                         </a>

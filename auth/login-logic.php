@@ -1,6 +1,6 @@
 <?php
 session_start();
-require ("../config/config.php");
+require("../config/config.php");
 include('index.php');
 
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
                 ];
 
                 if ($user['role'] == 'manager') {
-                    header("Location: ../views/e-dashboard.php");
+                    header("Location: ../views/manager_dashboard.php");
                 } else {
                     header("Location: ../views/e-dashboard.php");
                 }
