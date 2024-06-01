@@ -18,7 +18,11 @@ if ($columnInfo) {
     $enumValues = $matches[1];
 
     // Output the enum values
-} ?>
+} 
+
+
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -98,16 +102,7 @@ if ($columnInfo) {
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <form>
-                            <div class="input-group no-border">
-                                <input type="text" value="" class="form-control" placeholder="Search...">
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <i class="nc-icon nc-zoom-split"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                       
                         <!--Notification part -->
                         <ul class="navbar-nav">
                             <li class="nav-item btn-rotate dropdown">
@@ -131,7 +126,38 @@ if ($columnInfo) {
             <!-- Navbar -->
 
             <!-- End Navbar -->
-
+            <style>
+    
+    .row{
+        margin-top: 50px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+  .card-header {
+    padding: 10px; 
+    text-align: center; 
+    max-height: 50px; 
+  }
+  
+  .card-category {
+    font-size: 14px; 
+    color: white !important;
+    margin-bottom: 10px; }
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .task-title {
+      margin: 0;
+      font-size: 14px;
+    }
+    .task-icon {
+      cursor: pointer;
+    }
+</style>
             <div class="content">
                 <div class="row">
                     <?php
@@ -168,7 +194,50 @@ if ($columnInfo) {
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Task 1.1 details go here -->
-                                                            <?php echo $task['title']; ?>
+                                                          
+                                                            
+                                            <div class="mb-3">
+                                                <label for="title" class="form-label">Title:</label>
+                                                <p  class="form-control" name="title"  id="title"> <?php echo $task['title']; ?></p>
+                                            </div>
+                                            <div class="mb-3">
+                                               <label for="description" class="form-label">Description:</label>
+
+                                                <p  class="form-control" id="description" name="description"><?php echo $task['description']; ?></p>
+                                       
+                                            </div>
+                                            
+                                            <form method="POST" name="editStatus" action="edit_status.php">
+                                            <div class="mb-3">
+                                            <input type="hidden" name="id" id="editTaskIdInput" value="<?php echo $task['id']; ?>">
+                                                <label for="status" class="form-label">Status:</label>
+                                                <select class="form-select" id="status_active" name="status_active">
+                                                    <option value="backlog">Backlog</option>
+                                                    <option value="in_progress">In Progress</option>
+                                                    <option value="in_review">In Review</option>
+                                                    <option value="ready_for_schedule">Ready for Schedule</option>
+                                                    <option value="scheduled">Scheduled</option>
+                                                    <option value="done">Done</option>
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" name="submit">Set status</button>
+                                            </form>
+
+                                            <div class="mb-3">
+                                                <label for="priority" class="form-label">Priority:</label>
+                                                <select class="form-select" id="priority" name="priority" readonly>
+                                                    <option value="<?php echo $task['priority'];?>"><?php echo $task['priority'];?></option>
+                                                </select>
+                                            </div>
+                                            <?php if ($task['deadline'] !== null): ?>
+    <div class="mb-3">
+        <label for="deadline" class="form-label">Deadline:</label>
+        <p class="form-control" id="deadline" name="deadline"><?php echo $task['deadline']; ?></p>
+    </div>
+<?php endif; ?>
+                                           
+                                           
+                                       
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -225,6 +294,21 @@ if ($columnInfo) {
             <script src="../assets/js/plugins/bootstrap-notify.js"></script>
             <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
             <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+
+            <script>
+        // function selectOption() {
+        //     const selectElement = document.getElementById('status_active');
+        //     const selectedValue = selectElement.value;
+
+        //     for (let i = 0; i < selectElement.options.length; i++) {
+        //         if (selectElement.options[i].value == selectElement.value) {
+        //             selectElement.options[i].selected = true;
+        //         }
+        //     }
+
+        // }
+
+            </script>
 </body>
 
 </html>
