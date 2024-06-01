@@ -56,7 +56,7 @@ try {
           <li>
             <a href="javascript:;">
               <i class="nc-icon nc-diamond"></i>
-              <p>Second Item</p>
+             <a href="../views/employee_dashboard.php"> Tasks</a>
             </a>
           </li>
           <li>
