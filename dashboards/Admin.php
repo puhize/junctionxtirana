@@ -74,11 +74,11 @@ try {
           <li>
             <a href="profile.php">
               <i class="nc-icon nc-pin-3"></i>
-              <p>Profile</p>
+              <p>Profile</p>   
             </a>
           </li>
           <li>
-            <a href="javascript:;">
+            <a href="../auth/logout-logic.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Log Out</p>
             </a>
