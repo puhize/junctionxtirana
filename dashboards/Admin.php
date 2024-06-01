@@ -4,10 +4,12 @@ require '../config/config.php';
 try {
     $stmt = $conn->query("SELECT * FROM users");
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $userCount = count($users); // Count the number of users
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -128,10 +130,10 @@ try {
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Users</p>
-                      <p class="card-title">Staff<p>
-                    </div>
+                      <div class="numbers">
+                          <p class="card-category">Users</p>
+                          <p class="card-title"><?= $userCount ?></p> <!-- Display the number of users -->
+                      </div>
                   </div>
                 </div>
               </div>
@@ -154,10 +156,10 @@ try {
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Tasks</p>
-                      <p class="card-title">All Tasks<p>
-                    </div>
+                      <div class="numbers">
+                          <p class="card-category">Tasks</p>
+                          <p class="card-title"><?= $userCount ?></p> <!-- Display the number of users -->
+                      </div>
                   </div>
                 </div>
               </div>
@@ -180,10 +182,10 @@ try {
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Tasks</p>
-                      <p class="card-title">Finished<p>
-                    </div>
+                      <div class="numbers">
+                          <p class="card-category">Finished</p>
+                          <p class="card-title"><?= $userCount ?></p> <!-- Display the number of users -->
+                      </div>
                   </div>
                 </div>
               </div>
@@ -206,10 +208,10 @@ try {
                     </div>
                   </div>
                   <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Tasks</p>
-                      <p class="card-title">Finnished<p>
-                    </div>
+                      <div class="numbers">
+                          <p class="card-category">In-Progress Tasks</p>
+                          <p class="card-title"><?= $userCount ?></p> <!-- Display the number of users -->
+                      </div>
                   </div>
                 </div>
               </div>
