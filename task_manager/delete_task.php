@@ -1,21 +1,19 @@
 <?php
-require ('../config/config.php');
+include('../config/config.php');
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-
+if(isset($_GET['id'])) {
     $sql = "DELETE FROM tasks WHERE id = :id";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':id', $id);
-
-    if ($stmt->execute()) {
-        echo "Task deleted successfully";
+    $stmt->bindParam(':id', $_GET['id']);
+    if($stmt->execute()) {
+        header("Location: ../views/all_tasks.php");
+        exit();
     } else {
-        echo "Error: " . $stmt->errorInfo()[2];
+        // Error occurred while deleting the task
+        echo "Error deleting task.";
     }
 } else {
-    die("ID not specified.");
+    // Invalid or missing task ID
+    echo "Invalid task ID.";
 }
-
-header("Location: task_m.php");
 ?>
