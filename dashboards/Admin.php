@@ -49,7 +49,7 @@ try {
         <ul class="nav">
           <li class="active ">
             <a href="javascript:;">
-              <i class="nc-icon nc-bank"></i>
+              <i class="nc-icon nc-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
           </li>
@@ -127,6 +127,58 @@ try {
       </nav>
       <!-- End Navbar -->
       <div class="content">
+        <div class="row">
+          <?php
+          foreach ($enumValues as $status) { ?>
+            <div class="col-md-2">
+              <div class="card">
+                <div class="card-header" style="background-color: #00344F; color: white;">
+                  <h5 class="card-category"><?php echo $status; ?></h5>
+                </div>
+                <div class="card-body" style="max-height: 300px; height: 300px; overflow-y: auto;" id="backlogCardBody">
+                  <?php
+                  // $taskStmt = $conn->prepare("SELECT * FROM tasks WHERE status = :status");
+                  // $taskStmt->bindParam(':status', $status);
+                  // $taskStmt->execute();
+                  // $tasks = $taskStmt->fetchAll(PDO::FETCH_ASSOC);
+                  foreach ($tasks as $task) { ?>
+                    <?php if ($task['status'] == $status) { ?>
+                      <?php $modalId = 'taskModal' . $task['id']; ?>
+                      <div class="task">
+                        <span class="task-title">
+                          <?php echo $task['title']; ?>
+                        </span>
+                        <i class="fa fa-info-circle task-icon" data-toggle="modal" data-target="#<?php echo $modalId; ?>"></i>
+
+                      </div>
+                      <div class="modal fade" id="<?php echo $modalId; ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $modalId; ?>" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="<?php echo $modalId; ?>"><?php echo $task['title']; ?></h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- Task 1.1 details go here -->
+                              <?php echo $task['title']; ?>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php } ?>
+
+                  <?php } ?>
+
+                </div>
+              </div>
+            </div>
+          <?php  } ?>
+        </div>
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
