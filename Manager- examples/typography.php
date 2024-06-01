@@ -54,49 +54,49 @@ Coded by www.creative-tim.com
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="./dashboard.html">
+            <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="./icons.php">
               <i class="nc-icon nc-diamond"></i>
               <p>Icons</p>
             </a>
           </li>
-          <li class="active ">
-            <a href="./map.html">
+          <li>
+            <a href="./map.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Maps</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="./notifications.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Notifications</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="./user.php">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="./tables.php">
               <i class="nc-icon nc-tile-56"></i>
               <p>Table List</p>
             </a>
           </li>
-          <li>
-            <a href="./typography.html">
+          <li class="active ">
+            <a href="./typography.php">
               <i class="nc-icon nc-caps-small"></i>
               <p>Typography</p>
             </a>
           </li>
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="./upgrade.php">
               <i class="nc-icon nc-spaceship"></i>
               <p>Upgrade to PRO</p>
             </a>
@@ -172,12 +172,86 @@ Coded by www.creative-tim.com
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header ">
-                Google Maps
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Paper Table Heading</h5>
+                <p class="category">Created using Montserrat Font Family</p>
               </div>
-              <div class="card-body ">
-                <div id="map" class="map"></div>
+              <div class="card-body">
+                <div class="typography-line">
+                  <h1><span>Header 1</span>The Life of Paper Dashboard </h1>
+                </div>
+                <div class="typography-line">
+                  <h2><span>Header 2</span>The Life of Paper Dashboard </h2>
+                </div>
+                <div class="typography-line">
+                  <h3><span>Header 3</span>The Life of Paper Dashboard </h3>
+                </div>
+                <div class="typography-line">
+                  <h4><span>Header 4</span>The Life of Paper Dashboard </h4>
+                </div>
+                <div class="typography-line">
+                  <h5><span>Header 5</span>The Life of Paper Dashboard </h5>
+                </div>
+                <div class="typography-line">
+                  <h6><span>Header 6</span>The Life of Paper Dashboard </h6>
+                </div>
+                <div class="typography-line">
+                  <p><span>Paragraph</span>
+                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
+                  </p>
+                </div>
+                <div class="typography-line">
+                  <span>Quote</span>
+                  <blockquote>
+                    <p class="blockquote blockquote-primary">
+                      "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
+                      <br>
+                      <br>
+                      <small>
+                        - Noaa
+                      </small>
+                    </p>
+                  </blockquote>
+                </div>
+                <div class="typography-line">
+                  <span>Muted Text</span>
+                  <p class="text-muted">
+                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
+                  </p>
+                </div>
+                <div class="typography-line">
+                  <span>Primary Text</span>
+                  <p class="text-primary">
+                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...</p>
+                </div>
+                <div class="typography-line">
+                  <span>Info Text</span>
+                  <p class="text-info">
+                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
+                </div>
+                <div class="typography-line">
+                  <span>Success Text</span>
+                  <p class="text-success">
+                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
+                </div>
+                <div class="typography-line">
+                  <span>Warning Text</span>
+                  <p class="text-warning">
+                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
+                  </p>
+                </div>
+                <div class="typography-line">
+                  <span>Danger Text</span>
+                  <p class="text-danger">
+                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
+                </div>
+                <div class="typography-line">
+                  <h2><span>Small Tag</span>
+                    Header with small subtitle <br>
+                    <small>Use "small" tag for the headers</small>
+                  </h2>
+                </div>
               </div>
             </div>
           </div>
@@ -219,11 +293,6 @@ Coded by www.creative-tim.com
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      demo.initGoogleMaps();
-    });
-  </script>
 </body>
 
 </html>

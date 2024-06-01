@@ -40,49 +40,49 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="./icons.php">
               <i class="nc-icon nc-diamond"></i>
               <p>Icons</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="./map.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Maps</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="./notifications.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Notifications</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="./user.php">
               <i class="nc-icon nc-single-02"></i>
-              <p>User Profile</p>
+              <p> Profile</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="./tables.php">
               <i class="nc-icon nc-tile-56"></i>
               <p>Table List</p>
             </a>
           </li>
           <li>
-            <a href="./typography.html">
+            <a href="./typography.php">
               <i class="nc-icon nc-caps-small"></i>
               <p>Typography</p>
             </a>
           </li>
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="./upgrade.php">
               <i class="nc-icon nc-spaceship"></i>
               <p>Upgrade to PRO</p>
             </a>
@@ -102,7 +102,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
+            <a class="navbar-brand" href="javascript:;">Manager Dashboard </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -110,25 +110,10 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+           
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link btn-magnify" href="javascript:;">
-                  <i class="nc-icon nc-layout-11"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
+             
+             
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="nc-icon nc-bell-55"></i>
@@ -142,14 +127,7 @@
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link btn-rotate" href="javascript:;">
-                  <i class="nc-icon nc-settings-gear-65"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -168,7 +146,7 @@
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
-                      <p class="card-category">Capacity</p>
+                      <p class="card-category"></p>
                       <p class="card-title">150GB<p>
                     </div>
                   </div>
@@ -262,70 +240,151 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
-                <p class="card-category">24 Hours performance</p>
-              </div>
-              <div class="card-body ">
-                <canvas id=chartHours width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-history"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
+        <style>
+  .card-header {
+    padding: 10px; 
+    text-align: center; 
+    max-height: 50px; 
+  }
+  
+  .card-category {
+    font-size: 14px; 
+    color: black !important;
+    margin-bottom: 10px; }
+    .task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .task-title {
+      margin: 0;
+      font-size: 14px;
+    }
+    .task-icon {
+      cursor: pointer;
+    }
+</style>
+
+<div class="row">
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-header" style="background-color: #AEC6CF; color: black;">
+        <h5 class="card-category">Backlog</h5>
+      </div>
+      
+      <div class="card-body" style="max-height: 300px; height: 300px; overflow-y: auto;"  id="backlogCardBody">
+        <div class="task">
+          <span class="task-title">Task 1.1</span>
+          <i class="fa fa-info-circle task-icon" data-toggle="modal" data-target="#task1Modal"></i>
+          
         </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card ">
-              <div class="card-header ">
-                <h5 class="card-title">Email Statistics</h5>
-                <p class="card-category">Last Campaign Performance</p>
-              </div>
-              <div class="card-body ">
-                <canvas id="chartEmail"></canvas>
-              </div>
-              <div class="card-footer ">
-                <div class="legend">
-                  <i class="fa fa-circle text-primary"></i> Opened
-                  <i class="fa fa-circle text-warning"></i> Read
-                  <i class="fa fa-circle text-danger"></i> Deleted
-                  <i class="fa fa-circle text-gray"></i> Unopened
-                </div>
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-calendar"></i> Number of emails sent
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="card card-chart">
-              <div class="card-header">
-                <h5 class="card-title">NASDAQ: AAPL</h5>
-                <p class="card-category">Line Chart with Points</p>
-              </div>
-              <div class="card-body">
-                <canvas id="speedChart" width="400" height="100"></canvas>
-              </div>
-              <div class="card-footer">
-                <div class="chart-legend">
-                  <i class="fa fa-circle text-info"></i> Tesla Model S
-                  <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                </div>
-                <hr />
-                <div class="card-stats">
-                  <i class="fa fa-check"></i> Data information certified
-                </div>
-              </div>
-            </div>
-          </div>
+   
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-header" style="background-color: #CFCFC4; color: black;">
+        <h5 class="card-category">In Progress</h5>
+      </div>
+      <div class="card-body" style="max-height: 300px;  height: 300px; overflow-y: auto;">
+        <div class="task">
+          <span class="task-title">Task 1.1</span>
+          <i class="fa fa-info-circle task-icon" data-toggle="modal" data-target="#task1Modal"></i>
+          
+        </div>
+   
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-header" style="background-color: #77DD77; color: black;">
+        <h5 class="card-category">In Review</h5>
+      </div>
+      <div class="card-body" style="max-height: 300px;  height: 300px; overflow-y: auto;">
+        <div class="task">
+          <span class="task-title">Task 1.1</span>
+          <i class="fa fa-info-circle task-icon" data-toggle="modal" data-target="#task1Modal"></i>
+          
+        </div>
+   
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-header" style="background-color: #FFB347; color: black;">
+        <h5 class="card-category">Ready for Schedule</h5>
+      </div>
+      <div class="card-body" style="max-height: 300px;   height: 300px; overflow-y: auto;">
+        <div class="task">
+          <span class="task-title">Task 1.1</span>
+          <i class="fa fa-info-circle task-icon" data-toggle="modal" data-target="#task1Modal"></i>
+          
+        </div>
+   
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-header" style="background-color: #B39EB5; color: black;">
+        <h5 class="card-category">Scheduled</h5>
+      </div>
+      <div class="card-body" style="max-height: 300px;  height: 300px; overflow-y: auto;">
+        <div class="task">
+          <span class="task-title">Task 1.1</span>
+          <i class="fa fa-info-circle task-icon" data-toggle="modal" data-target="#task1Modal"></i>
+          
+        </div>
+   
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-header" style="background-color: #FF6961; color: black;">
+        <h5 class="card-category">Done</h5>
+      </div>
+      <div class="card-body" style="max-height: 300px;  height: 300px; overflow-y: auto;">
+        <div class="task">
+          <span class="task-title">Task 1.1</span>
+          <i class="fa fa-info-circle task-icon" data-toggle="modal" data-target="#task1Modal"></i>
+          
+        </div>
+   
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL  -->
+<div class="modal fade" id="task1Modal" tabindex="-1" role="dialog" aria-labelledby="task1ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="task1ModalLabel">Task 1.1 Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Task 1.1 details go here -->
+        This is the detail information for Task 1.1.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+       
         </div>
       </div>
       <footer class="footer footer-black  footer-white ">
@@ -370,6 +429,12 @@
       demo.initChartsPages();
     });
   </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </body>
 
 </html>

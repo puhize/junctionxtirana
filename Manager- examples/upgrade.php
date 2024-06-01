@@ -54,49 +54,49 @@ Coded by www.creative-tim.com
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="./dashboard.html">
+            <a href="./dashboard.php">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="./icons.php">
               <i class="nc-icon nc-diamond"></i>
               <p>Icons</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="./map.php">
               <i class="nc-icon nc-pin-3"></i>
               <p>Maps</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="./notifications.php">
               <i class="nc-icon nc-bell-55"></i>
               <p>Notifications</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="./user.php">
               <i class="nc-icon nc-single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
-          <li class="active ">
-            <a href="./tables.html">
+          <li>
+            <a href="./tables.php">
               <i class="nc-icon nc-tile-56"></i>
               <p>Table List</p>
             </a>
           </li>
           <li>
-            <a href="./typography.html">
+            <a href="./typography.php">
               <i class="nc-icon nc-caps-small"></i>
               <p>Typography</p>
             </a>
           </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
+          <li class="active  active-pro " class="active-pro">
+            <a href="./upgrade.php">
               <i class="nc-icon nc-spaceship"></i>
               <p>Upgrade to PRO</p>
             </a>
@@ -171,253 +171,68 @@ Coded by www.creative-tim.com
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> Simple Table</h4>
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-upgrade">
+              <div class="card-header text-center">
+                <h4 class="card-title">Paper Dashboard PRO</h3>
+                  <p class="card-category">Are you looking for more components? Please check our Premium Version of Paper Dashboard PRO.</p>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive table-upgrade">
                   <table class="table">
-                    <thead class=" text-primary">
-                      <th>
-                        Name
-                      </th>
-                      <th>
-                        Country
-                      </th>
-                      <th>
-                        City
-                      </th>
-                      <th class="text-right">
-                        Salary
-                      </th>
+                    <thead>
+                      <th></th>
+                      <th class="text-center">Free</th>
+                      <th class="text-center">PRO</th>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-right">
-                          $36,738
-                        </td>
+                        <td>Components</td>
+                        <td class="text-center">16</td>
+                        <td class="text-center">160</td>
                       </tr>
                       <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td class="text-right">
-                          $23,789
-                        </td>
+                        <td>Plugins</td>
+                        <td class="text-center">4</td>
+                        <td class="text-center">13</td>
                       </tr>
                       <tr>
-                        <td>
-                          Sage Rodriguez
-                        </td>
-                        <td>
-                          Netherlands
-                        </td>
-                        <td>
-                          Baileux
-                        </td>
-                        <td class="text-right">
-                          $56,142
-                        </td>
+                        <td>Example Pages</td>
+                        <td class="text-center">7</td>
+                        <td class="text-center">27</td>
                       </tr>
                       <tr>
-                        <td>
-                          Philip Chaney
-                        </td>
-                        <td>
-                          Korea, South
-                        </td>
-                        <td>
-                          Overland Park
-                        </td>
-                        <td class="text-right">
-                          $38,735
-                        </td>
+                        <td>Login, Register, Pricing, Lock Pages</td>
+                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
+                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
                       </tr>
                       <tr>
-                        <td>
-                          Doris Greene
-                        </td>
-                        <td>
-                          Malawi
-                        </td>
-                        <td>
-                          Feldkirchen in Kärnten
-                        </td>
-                        <td class="text-right">
-                          $63,542
-                        </td>
+                        <td>DataTables, VectorMap, SweetAlert, Wizard, jQueryValidation, FullCalendar etc...</td>
+                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
+                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
                       </tr>
                       <tr>
-                        <td>
-                          Mason Porter
-                        </td>
-                        <td>
-                          Chile
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-right">
-                          $78,615
-                        </td>
+                        <td>Mini Sidebar</td>
+                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
+                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
                       </tr>
                       <tr>
-                        <td>
-                          Jon Porter
-                        </td>
-                        <td>
-                          Portugal
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-right">
-                          $98,615
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="card card-plain">
-              <div class="card-header">
-                <h4 class="card-title"> Table on Plain Background</h4>
-                <p class="card-category"> Here is a subtitle for this table</p>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>
-                        Name
-                      </th>
-                      <th>
-                        Country
-                      </th>
-                      <th>
-                        City
-                      </th>
-                      <th class="text-right">
-                        Salary
-                      </th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-right">
-                          $36,738
-                        </td>
+                        <td>Premium Support</td>
+                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
+                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
                       </tr>
                       <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td class="text-right">
-                          $23,789
-                        </td>
+                        <td></td>
+                        <td class="text-center">Free</td>
+                        <td class="text-center">Just $39</td>
                       </tr>
                       <tr>
-                        <td>
-                          Sage Rodriguez
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                          <a href="#" class="btn btn-round btn-default disabled">Current Version</a>
                         </td>
-                        <td>
-                          Netherlands
-                        </td>
-                        <td>
-                          Baileux
-                        </td>
-                        <td class="text-right">
-                          $56,142
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Philip Chaney
-                        </td>
-                        <td>
-                          Korea, South
-                        </td>
-                        <td>
-                          Overland Park
-                        </td>
-                        <td class="text-right">
-                          $38,735
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Doris Greene
-                        </td>
-                        <td>
-                          Malawi
-                        </td>
-                        <td>
-                          Feldkirchen in Kärnten
-                        </td>
-                        <td class="text-right">
-                          $63,542
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Mason Porter
-                        </td>
-                        <td>
-                          Chile
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-right">
-                          $78,615
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Jon Porter
-                        </td>
-                        <td>
-                          Portugal
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-right">
-                          $98,615
+                        <td class="text-center">
+                          <a target="_blank" href="https://www.creative-tim.com/product/paper-dashboard-2-pro?ref=pd-free-upgrade-live" class="btn btn-round btn-primary">Upgrade to PRO</a>
                         </td>
                       </tr>
                     </tbody>
