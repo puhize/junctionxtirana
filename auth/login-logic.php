@@ -1,9 +1,11 @@
 <?php
 session_start();
-
 require ("../config/config.php");
+include('index.php');
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
+
     $email = $_POST["email"];
     $password = $_POST["password"];
 
@@ -12,22 +14,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":email", $email);
         $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = $stmt->fetch();
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
-                header("Location: ../index.php");
+                $_SESSION['user'] = [
+                    'id' => $user['id'],
+                    'name' => $user['name'],
+                    'surname' => $user['surname'],
+                    'email' => $user['email'],
+                    'role' => $user['role']
+                ];
+
+                if ($user['role'] == 'manager') {
+                    header("Location: ../views/employee_dashboard.php");
+                } else {
+                    header("Location: ../views/employee_dashboard.php");
+                }
                 exit();
             } else {
-                echo "Invalid email or password";
+                $error = "Invalid email or password";
             }
         } else {
-            echo "Invalid email or password";
+            $error = "Invalid email or password";
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        $error = "Error: " . $e->getMessage();
     }
 } else {
-    echo "Invalid email or password";
+    $error = "Invalid request method";
 }
-?>

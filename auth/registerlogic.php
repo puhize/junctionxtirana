@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-require ("../config/config.php");
+require("../config/config.php");
+
+// Initialize error message variable
+$errorMsg = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $name = $_POST["name"];
@@ -10,16 +13,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $password = $_POST["password"];
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    
+
     try {
-        $checkSql = "SELECT * FROM users WHERE email = :email";
+        $checkSql = "SELECT * FROM users WHERE email=:email";
         $checkStmt = $conn->prepare($checkSql);
         $checkStmt->bindParam(":email", $email);
         $checkStmt->execute();
         $existingUser = $checkStmt->fetch();
 
         if ($existingUser) {
-            echo "Error: Email is already registered. Please use a different email.";
+            $_SESSION['errorMsg'] = "Email is already registered. Please use a different email.";
+
         } else {
             $sql = "INSERT INTO users (name, surname, email, password) VALUES (:name, :surname, :email, :password)";
             $stmt = $conn->prepare($sql);
@@ -29,16 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             $stmt->bindParam(":password", $hashedPassword);
 
             if ($stmt->execute()) {
-                header("Location: ../index.php");
+                header("Location: index.php");
                 exit();
             } else {
-                echo "Error: Unable to register. Please try again.";
+                $_SESSION['errorMsg'] = "Error: Unable to register. Please try again.";
             }
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        $_SESSION['errorMsg'] = "Error: " . $e->getMessage();
     }
 } else {
     echo "Invalid request.";
 }
-?>

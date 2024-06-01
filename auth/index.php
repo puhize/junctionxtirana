@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+
+
+require "../config/config.php";
+
+?>
 
 <head>
   <link href="../assets/css/login.css" rel="stylesheet">
@@ -8,17 +14,30 @@
 <body>
   <div class="container" id="container">
     <div class="form-container sign-up-container">
-      <?php if (!empty($errorMsg)) : ?>
-        <div style="color: red;"><?php echo $errorMsg; ?></div>
-      <?php endif; ?>
       <form action="registerlogic.php" method="post">
+
+        <!-- 
+        <div id="errorMessageSignUp" style="color: red; margin-bottom: 10px; display: <?php echo ($errorMsg != '') ? 'block' : 'none'; ?>">
+          <h2>Error</h2>
+        </div> -->
+
+
         <h1>Create Account</h1>
         <input id="inputFirstName" name="name" type="text" placeholder="Enter your first name" required />
         <input id="inputLastName" name="surname" type="text" placeholder="Enter your last name" required />
         <input id="inputEmail" name="email" type="email" placeholder="name@example.com" required />
+        <?php if (isset($_SESSION['errorMsg']) && $_SESSION['errorMsg'] !== '') : ?>
+          <div class="error-message" id="error-message" id="errorMessageSignUp">
+            <h2 style="font-size: smaller;"><?php echo $_SESSION['errorMsg']; ?></h2>
+          </div>
+
+          <?php unset($_SESSION['errorMsg']); // Clear the error message after displaying 
+          ?>
+        <?php endif; ?>
+
         <input id="inputPassword" name="password" type="password" placeholder="Create a password" required />
 
-        <input class="button" type="submit" name="submit" value="Create Account">
+        <input class="button" id="createaccount" type="submit" name="submit" value="Create Account">
       </form>
     </div>
 
