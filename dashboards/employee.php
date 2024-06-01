@@ -10,7 +10,7 @@ if(!isset($_SESSION['user'])){
 $user = $_SESSION['user'];
 
 
-if($user['role']=='manager'){
+if($user['role']=='manager' || $user['role']=='admin'){
     $sql = "SELECT * from tasks";
 }
 else if($user['role']=='employee'){

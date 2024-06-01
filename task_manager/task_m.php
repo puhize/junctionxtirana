@@ -4,7 +4,11 @@ class DatabaseConnection
 {
     private $servername = "localhost";
     private $username = "root";
+<<<<<<< HEAD
+    private $password = ""; 
+=======
     private $password = ""; // Leave this empty
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
     private $dbname = "managemate_db";
 
     public function startConnection()
@@ -45,20 +49,34 @@ class TaskManager
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+<<<<<<< HEAD
+    /*
+=======
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
     public function updateTask($id, $title, $description, $status, $priority, $deadline, $assigned_to)
     {
         $sql = "UPDATE tasks SET title=?, description=?, status=?, priority=?, deadline=?, assigned_to=? WHERE id=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$title, $description, $status, $priority, $deadline, $assigned_to, $id]);
-    }
+    }*/
 
+<<<<<<< HEAD
+  
+
+    /*public function deleteTask($id)
+=======
     public function deleteTask($id)
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
     {
         $sql = "DELETE FROM tasks WHERE id=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
     }
+<<<<<<< HEAD
+*/
+=======
 
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
     public function getUsers()
     {
         $sql = "SELECT id, name, surname FROM users";
@@ -97,14 +115,34 @@ if (isset($_POST['create'])) {
 // Read operation
 $tasks = $taskManager->getTasks();
 
+
+$sql = "SELECT * FROM users WHERE role = 'employee'";
+$stmt = $conn->prepare($sql); // Prepare the SQL query
+$stmt->execute(); // Execute the prepared statement
+$employees = $stmt->fetchAll(); // Fetch all the rows
+
+
+
 // Update operation
 if (isset($_POST['update'])) {
     $taskManager->updateTask($_POST['id'], $_POST['title'], $_POST['description'], $_POST['status'], $_POST['priority'], $_POST['deadline'], $_POST['assigned_to']);
 }
 
 // Delete operation
+<<<<<<< HEAD
+//if (isset($_POST['delete'])) {
+  //  $taskManager->deleteTask($_POST['id']);
+//}
+
+// Edit operation
+if (isset($_POST['edit'])) {
+    $taskId = $_POST['id'];
+    // Retrieve the task details from the database based on the selected task ID
+    $selectedTask = $taskManager->getTaskById($taskId);
+=======
 if (isset($_POST['delete'])) {
     $taskManager->deleteTask($_POST['id']);
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
 }
 
 // Edit operation
@@ -201,7 +239,16 @@ if (isset($_POST['edit'])) {
                                             </div>
                                             <div class="mb-3">
                                                 <label for="assigned_to" class="form-label">Assigned To:</label>
+<<<<<<< HEAD
+                                                <select class="form-select" id="assigned_to" name="assigned_to">
+                                                   <?php foreach($employees as $employee){
+                                                    ?>  <option value="<?php echo $employee['id']; ?>"><?php echo $employee["name"]?></option>
+                                                   <?php } ?>
+                                                </select>
+
+=======
                                                 <input type="text" class="form-control" id="assigned_to" name="assigned_to">
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
                                             </div>
                                             <button type="submit" class="btn btn-primary" name="create">Create</button>
                                         </form>
@@ -236,11 +283,20 @@ if (isset($_POST['edit'])) {
                                         <td class="action-links">
 
 
+<<<<<<< HEAD
+                                            <form method="post" action="edit_tasks.php">
+=======
                                             <form method="post">
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
                                                 <input type="hidden" name="id" value="<?= $task['id'] ?>">
                                                 <!-- Add a hidden input field to store the ID of the task being edited -->
                                                 <input type="hidden" id="editTaskId" name="edit_task_id">
 
+<<<<<<< HEAD
+                                                <a href='delete_task.php?id=<?php echo $task['id']; ?>' class="btn btn-sm btn-primary edit-btn" >Delete</a>
+
+=======
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
                                                 <!-- Modify the Edit button to trigger the modal and populate its fields -->
                                                 <button type="button" class="btn btn-sm btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editTaskModal" data-id="<?= $task['id'] ?>">Edit</button>
 
@@ -254,6 +310,61 @@ if (isset($_POST['edit'])) {
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form method="post">
+<<<<<<< HEAD
+                                                                    <input type="hidden" name="id" id="editTaskIdInput" value="<?php echo $task['id'];?>"> <!-- Hidden input to store task ID -->
+                                                                    <div class="mb-3">
+                                                                        <label for="edit_title" class="form-label">Title:</label>
+                                                                        <input type="text" class="form-control" id="edit_title" name="title"  value="<?php echo $task['title']?>" required>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="desc" class="form-label">Description:</label>
+                                                                        <input type="text" class="form-control" id="desc" name="description"  value="<?php echo $task['description']?>" >
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="status" class="form-label">Status:</label>
+                                                                      
+                                                                        <select class="form-select" id="status" name="status" value="<?php echo $task['status']; ?>">
+                                                                            <option value="backlog">Backlog</option>
+                                                                            <option value="in_progress">In Progress</option>
+                                                                            <option value="in_review">In Review</option>
+                                                                            <option value="ready_for_schedule">Ready for Schedule</option>
+                                                                            <option value="scheduled">Scheduled</option>
+                                                                            <option value="done">Done</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="priority" class="form-label">Priority:</label>
+
+                                                                        <select class="form-select" id="priority" name="priority">
+                                                                        <option value="low">Low</option>
+                                                                        <option value="medium">Medium</option>
+                                                                        <option value="high">High</option>
+                                                                    </select>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="deadline" class="form-label">Deadline:</label>
+                                                                        <input type="date" class="form-control" id="deadline" name="deadline"  value="<?php echo $task['deadline']?>" >
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label for="assigned_to" class="form-label">Assigned_to:</label>
+                                                                        <select class="form-select" id="assigned_to" name="assigned_to">
+                                                                        <?php foreach($employees as $employee){
+                                                                            ?>  <option value="<?php echo $employee['id']; ?>"><?php echo $employee["name"]?></option>
+                                                                        <?php } ?>
+                                                                        </select>>
+
+                                                                       
+                                                                    </div>
+
+                                                                    <!-- Add other input fields for description, status, priority, deadline, assigned_to -->
+                                                                    <!-- Use JavaScript to populate these fields with task data -->
+                                                                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+=======
                                                                     <input type="hidden" name="id" id="editTaskIdInput"> <!-- Hidden input to store task ID -->
                                                                     <div class="mb-3">
                                                                         <label for="edit_title" class="form-label">Title:</label>
@@ -262,6 +373,7 @@ if (isset($_POST['edit'])) {
                                                                     <!-- Add other input fields for description, status, priority, deadline, assigned_to -->
                                                                     <!-- Use JavaScript to populate these fields with task data -->
                                                                     <button type="submit" class="btn btn-primary" name="update">Update</button>
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -281,7 +393,11 @@ if (isset($_POST['edit'])) {
                                                     });
                                                 </script>
 
+<<<<<<< HEAD
+                                               <!-- <button type="submit" class="btn btn-sm btn-danger" name="delete">Delete</button>-->
+=======
                                                 <button type="submit" class="btn btn-sm btn-danger" name="delete">Delete</button>
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
                                             </form>
                                         </td>
                                     </tr>
@@ -296,4 +412,8 @@ if (isset($_POST['edit'])) {
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 42dbefeead2bca6fe7bb1a70dec14bdb6ad63f13
