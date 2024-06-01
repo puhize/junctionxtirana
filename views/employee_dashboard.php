@@ -62,7 +62,6 @@
            
             <ul class="navbar-nav">
              
-             
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="nc-icon nc-bell-55"></i>
@@ -108,10 +107,6 @@
                         </div>
                         <div class="card-body" style="max-height: 300px; height: 300px; overflow-y: auto;"  id="backlogCardBody">
                             <?php 
-                                // $taskStmt = $conn->prepare("SELECT * FROM tasks WHERE status = :status");
-                                // $taskStmt->bindParam(':status', $status);
-                                // $taskStmt->execute();
-                                // $tasks = $taskStmt->fetchAll(PDO::FETCH_ASSOC);
                                 foreach($tasks as $task){ ?>
                                 <?php if($task['status']==$status){ ?> 
                                     <?php $modalId = 'taskModal'.$task['id'];?>
@@ -132,7 +127,6 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Task 1.1 details go here -->
                                             <?php echo $task['title'];?>
                                         </div>
                                         <div class="modal-footer">
@@ -150,6 +144,5 @@
                 </div>
       <?php  } ?> 
     </div>
-    <!-- MODAL  -->
  </div>
  <?php include('includes/footer.php');?>
