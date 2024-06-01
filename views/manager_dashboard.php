@@ -61,7 +61,7 @@ if ($columnInfo) {
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a href="">
+                        <a href="all_tasks.php">
                             <i class="nc-icon nc-paper"></i>
 
                             <p>Dashboard</p>
