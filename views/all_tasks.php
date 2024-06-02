@@ -5,7 +5,25 @@ include('../dashboards/employee.php');
 include('../config/config.php');
 include('includes/header.php');
 include('../task_manager/getEnums.php');
+try {
+    $stmt = $conn->query("SELECT * FROM users");
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt2 = $conn->query("SELECT * FROM tasks");
+    $tasks = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    $userCount = count($users);
+    $tasksCount = count($tasks);
 
+    $stmt2 = $conn->query("SELECT COUNT(*) AS in_progress_tasks_count FROM tasks WHERE status = 'In Progress'");
+    $taskResult = $stmt2->fetch(PDO::FETCH_ASSOC);
+    $inProgressTasksCount = $taskResult['in_progress_tasks_count'];
+
+
+    $stmt2 = $conn->query("SELECT COUNT(*) AS done_tasks_count FROM tasks WHERE status = 'Done'");
+    $taskResult2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+    $doneTasksCount = $taskResult2['done_tasks_count'];
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 $sql = "SHOW COLUMNS FROM tasks WHERE Field = 'status'";
 $stmt = $conn->prepare($sql);
