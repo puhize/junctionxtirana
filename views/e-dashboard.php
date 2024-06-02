@@ -9,6 +9,7 @@ $sql = "SHOW COLUMNS FROM tasks WHERE Field = 'status'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
+
 // Fetch the column information
 $columnInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
