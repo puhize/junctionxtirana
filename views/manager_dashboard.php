@@ -43,7 +43,8 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1239877130016264203/1246494735955398756/erta-logo.png?ex=665c982f&is=665b46af&hm=37da24a2c8e62d1df181f3041a913d796ff77b270f56268bd5996b06f7b9ec37&">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         Manage Mate
@@ -199,60 +200,60 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
                                                             <!-- Task 1.1 details go here -->
 
                                                             <form method="POST" name="editStatus" action="../task_manager/update_task.php">
-                                                            <input type="hidden" name="taskId" id="editTaskIdInput" value="<?php echo $task['id']; ?>">
-                                                            <div class="mb-3">
-                                                                <label for="title" class="form-label">Title:</label>
-                                                                <input type="text" class="form-control" name="title" id="title" value="<?php echo $task['title'];?>">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="description" class="form-label">Description:</label>
-                                                                <input type="text"  class="form-control" id="description" name="description" value="<?php echo $task['description']; ?>">
-                                                               
+                                                                <input type="hidden" name="taskId" id="editTaskIdInput" value="<?php echo $task['id']; ?>">
+                                                                <div class="mb-3">
+                                                                    <label for="title" class="form-label">Title:</label>
+                                                                    <input type="text" class="form-control" name="title" id="title" value="<?php echo $task['title']; ?>">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="description" class="form-label">Description:</label>
+                                                                    <input type="text" class="form-control" id="description" name="description" value="<?php echo $task['description']; ?>">
 
-                                                            </div>
 
-                                                              <div class="mb-3">
-                                                                   
+                                                                </div>
+
+                                                                <div class="mb-3">
+
                                                                     <label for="status" class="form-label">Status:</label>
                                                                     <select class="form-select" id="status" name="status">
-                                            <?php foreach ($statuses as $status) : ?>
-                                                <option><?php echo $status; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                                                        <?php foreach ($statuses as $status) : ?>
+                                                                            <option><?php echo $status; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
                                                                 </div>
-                                                               
 
-                                                            <div class="mb-3">
-                                                                <label for="priority" class="form-label">Priority:</label>
-                                                                <select class="form-select" id="priority" name="priority">
-                                            <?php  foreach ($priorities as $priority) : ?>
-                                                <option><?php echo $priority; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                                            </div>
-                                                            <?php if ($task['deadline'] !== null) : ?>
+
                                                                 <div class="mb-3">
-                                                                    <label for="deadline" class="form-label">Deadline:</label>
-                                                                   
-                                                                    <input type="date" class="form-control" id="deadline" name="deadline" value="<?php echo $task['deadline']; ?>">
+                                                                    <label for="priority" class="form-label">Priority:</label>
+                                                                    <select class="form-select" id="priority" name="priority">
+                                                                        <?php foreach ($priorities as $priority) : ?>
+                                                                            <option><?php echo $priority; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
                                                                 </div>
-                                                            <?php endif; ?>
+                                                                <?php if ($task['deadline'] !== null) : ?>
+                                                                    <div class="mb-3">
+                                                                        <label for="deadline" class="form-label">Deadline:</label>
 
-                                                            <div class="mb-3">
-                                            <label for="assigned_to" class="form-label">Assigned To:</label>
-                                            <select class="form-select" id="assigned_to" name="assigned_to">
-                                                <?php foreach ($employees as $employee) : ?>
-                                                    <option value="<?php echo $employee['id']; ?>" <?php echo ($task['assigned_to'] == $employee['id']) ? 'selected' : ''; ?>><?php echo $employee["name"]; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                                            
+                                                                        <input type="date" class="form-control" id="deadline" name="deadline" value="<?php echo $task['deadline']; ?>">
+                                                                    </div>
+                                                                <?php endif; ?>
+
+                                                                <div class="mb-3">
+                                                                    <label for="assigned_to" class="form-label">Assigned To:</label>
+                                                                    <select class="form-select" id="assigned_to" name="assigned_to">
+                                                                        <?php foreach ($employees as $employee) : ?>
+                                                                            <option value="<?php echo $employee['id']; ?>" <?php echo ($task['assigned_to'] == $employee['id']) ? 'selected' : ''; ?>><?php echo $employee["name"]; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
+                                                                </div>
+
 
 
 
                                                         </div>
                                                         <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" name="submit" style="background-color: #00344F !important;">Set status</button>
+                                                            <button type="submit" class="btn btn-primary" name="submit" style="background-color: #00344F !important;">Set status</button>
                                                             </form>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                         </div>
