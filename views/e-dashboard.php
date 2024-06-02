@@ -8,6 +8,8 @@ include('includes/header.php');
 $sql = "SHOW COLUMNS FROM tasks WHERE Field = 'status'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
+$stmt3 = $conn->query("SELECT * FROM notifications");
+  $notifications = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch the column information
 $columnInfo = $stmt->fetch(PDO::FETCH_ASSOC);
