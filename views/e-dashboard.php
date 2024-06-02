@@ -26,86 +26,9 @@ if ($columnInfo) {
 <?php include('includes/header.php');?>
 <body>
     <div class="wrapper ">
-        <div class="sidebar" data-color="white" data-active-color="danger">
-            <div class="logo">
-                <!-- <a class="simple-text logo-mini"> -->
-                <!-- </a> -->
-                <a href="" class="simple-text logo-normal">
-                    <img src="https://cdn.discordapp.com/attachments/1239877130016264203/1246494735955398756/erta-logo.png?ex=665c982f&is=665b46af&hm=37da24a2c8e62d1df181f3041a913d796ff77b270f56268bd5996b06f7b9ec37&" alt="" style="width: 50px; height: auto;">
-                    Manage Mate
-                </a>
-
-            </div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="active ">
-                        <a href="javascript:;">
-                            <i class="nc-icon nc-layout-11"></i>
-
-
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="m-d.php">
-                            <i class="nc-icon nc-paper"></i>
-
-                            <p>Tasks</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-
-                        <a class="nav-link" href="../auth/logout-logic.php">
-                            <i class="nc-icon nc-button-power"></i>
-                            <p>Logout</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <?php include('includes/sidebar.php'); ?>
         <div class="main-panel" style="height: 100vh;">
-            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <div class="navbar-toggle">
-                            <button type="button" class="navbar-toggler">
-                                <span class="navbar-toggler-bar bar1"></span>
-                                <span class="navbar-toggler-bar bar2"></span>
-                                <span class="navbar-toggler-bar bar3"></span>
-                            </button>
-                        </div>
-                        <a class="navbar-brand" href="javascript:;"> <?php echo $_SESSION['user']['name'] . " " . $_SESSION['user']['surname'] ?> </a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                        <span class="navbar-toggler-bar navbar-kebab"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-
-                        <!--Notification part -->
-                        <ul class="navbar-nav">
-                            <li class="nav-item btn-rotate dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="nc-icon nc-bell-55"></i>
-                                    <p>
-                                        <span class="d-lg-none d-md-block">Some Actions</span>
-                                    </p>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- Navbar -->
-
-            <!-- End Navbar -->
+            <?php include('includes/navbar.php'); ?>
             <style>
                 .task {
                     display: flex;
@@ -234,13 +157,6 @@ if ($columnInfo) {
                     </div>
                 </footer>
             </div>
-
-
-
-
-
-
-
             <!--   Core JS Files   -->
             <script src="../assets/js/core/jquery.min.js"></script>
             <script src="../assets/js/core/popper.min.js"></script>
