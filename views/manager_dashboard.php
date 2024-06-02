@@ -27,6 +27,7 @@ $userStmt->execute();
 $employees = $userStmt->fetchAll(PDO::FETCH_ASSOC);
 
 
+$statuses = getEnumValues($conn, 'tasks', 'status');
 $priorities = getEnumValues($conn, 'tasks', 'priority');
 
 
@@ -201,7 +202,7 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
                                                             <input type="hidden" name="taskId" id="editTaskIdInput" value="<?php echo $task['id']; ?>">
                                                             <div class="mb-3">
                                                                 <label for="title" class="form-label">Title:</label>
-                                                                <input type="text" class="form-control" name="title" id="title" value=" <?php echo $task['title']; ?>">
+                                                                <input type="text" class="form-control" name="title" id="title" value="<?php echo $task['title'];?>">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="description" class="form-label">Description:</label>
@@ -213,12 +214,11 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
                                                               <div class="mb-3">
                                                                    
                                                                     <label for="status" class="form-label">Status:</label>
-                                                                    <select class="form-select" id="status_active" name="status-active">
-                                                                        <?php foreach($enumValues as $status) {?>
-                                                                        <option value="<?php echo $task['status']; ?>"><?php echo $status; ?></option>
-                                                                        <?php }?>
-                                                                       
-                                                                    </select>
+                                                                    <select class="form-select" id="status" name="status">
+                                            <?php foreach ($statuses as $status) : ?>
+                                                <option><?php echo $status; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                                                 </div>
                                                                
 
