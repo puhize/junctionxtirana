@@ -7,17 +7,17 @@ try {
   $stmt2 = $conn->query("SELECT * FROM tasks");
   $tasks = $stmt2->fetchAll(PDO::FETCH_ASSOC);
   $userCount = count($users);
-  $tasksCount= count($tasks); 
-  
+  $tasksCount = count($tasks);
+
   $stmt2 = $conn->query("SELECT COUNT(*) AS in_progress_tasks_count FROM tasks WHERE status = 'In Progress'");
   $taskResult = $stmt2->fetch(PDO::FETCH_ASSOC);
   $inProgressTasksCount = $taskResult['in_progress_tasks_count'];
 
-  
+
   $stmt2 = $conn->query("SELECT COUNT(*) AS done_tasks_count FROM tasks WHERE status = 'Done'");
   $taskResult2 = $stmt2->fetch(PDO::FETCH_ASSOC);
   $doneTasksCount = $taskResult2['done_tasks_count'];
-} catch (PDOException $e) { 
+} catch (PDOException $e) {
   echo "Error: " . $e->getMessage();
 }
 ?>
@@ -61,25 +61,27 @@ try {
         <ul class="nav">
           <li class="active ">
             <a href="javascript:;">
-              <i class="nc-icon nc-bank"></i>
+              <i class="nc-icon nc-layout-11"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
             <a href="../views/employee_dashboard.php">
-              <i class="nc-icon nc-diamond"></i>
-             <p> Tasks</p>
+              <i class="nc-icon nc-paper"></i>
+
+              <p> Tasks</p>
             </a>
           </li>
           <li>
             <a href="profile.php">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Profile</p>   
+              <i class="nc-icon nc-single-02 profile-icon"></i>
+              <p>Profile</p>
             </a>
           </li>
           <li>
             <a href="../auth/logout-logic.php">
-              <i class="nc-icon nc-pin-3"></i>
+              <i class="nc-icon nc-button-power"></i>
+
               <p>Log Out</p>
             </a>
           </li>
@@ -151,7 +153,7 @@ try {
                     <div class="numbers">
                       <p class="card-category">Users</p>
                       <p class="card-title"><?= $userCount ?></p>
-                    </div>      
+                    </div>
                   </div>
                 </div>
               </div>
@@ -204,7 +206,7 @@ try {
                       <p class="card-category">Finished</p>
                       <p class="card-title"><?= $doneTasksCount ?></p>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
@@ -249,42 +251,42 @@ try {
           td {
             padding: 0px;
           }
-          .table-wrapper {
-    max-height: 380px; 
-    overflow-y: auto; 
-}
 
+          .table-wrapper {
+            max-height: 380px;
+            overflow-y: auto;
+          }
         </style>
-<div class="table-wrapper">
-        <table class="table" style="background-color:#e3e1e1;">
-          <thead>
-            <tr>
-              <th scope="col">User ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Surname</th>
-              <th scope="col">Email</th>
-              <th scope="col">Role</th>
-              <th scope="col">Created At</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($users as $user) : ?>
+        <div class="table-wrapper">
+          <table class="table" style="background-color:#e3e1e1;">
+            <thead>
               <tr>
-                <td><?= $user['id'] ?></td>
-                <td><?= $user['name'] ?></td>
-                <td><?= $user['surname'] ?></td>
-                <td><?= $user['email'] ?></td>
-                <td><?= $user['role'] ?></td>
-                <td><?= $user['created_at'] ?></td>
-                <td>
-                  <a href="#" data-toggle="modal" data-target="#editUserModal<?= $user['id'] ?>"><i class="fas fa-edit"></i></a>
-                  <a href="#" data-bs-toggle="modal" onclick="deleteUser(<?php echo $user['id']; ?>)"><i class="fas fa-trash-alt"></i></a>
-                </td>
+                <th scope="col">User ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Created At</th>
               </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-            </div>
+            </thead>
+            <tbody>
+              <?php foreach ($users as $user) : ?>
+                <tr>
+                  <td><?= $user['id'] ?></td>
+                  <td><?= $user['name'] ?></td>
+                  <td><?= $user['surname'] ?></td>
+                  <td><?= $user['email'] ?></td>
+                  <td><?= $user['role'] ?></td>
+                  <td><?= $user['created_at'] ?></td>
+                  <td>
+                    <a href="#" data-toggle="modal" data-target="#editUserModal<?= $user['id'] ?>"><i class="fas fa-edit"></i></a>
+                    <a href="#" data-bs-toggle="modal" onclick="deleteUser(<?php echo $user['id']; ?>)"><i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
 
         <?php foreach ($users as $user) : ?>
           <div class="modal fade" id="editUserModal<?= $user['id'] ?>" tabindex="-1" aria-labelledby="editUserModalLabel<?= $user['id'] ?>" aria-hidden="true">

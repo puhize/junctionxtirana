@@ -62,14 +62,16 @@ if ($columnInfo) {
                 <ul class="nav">
                     <li class="active ">
                         <a href="javascript:;">
-                            <i class="nc-icon nc-paper"></i>
+                            <i class="nc-icon nc-layout-11"></i>
+
 
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="m-d.php">
-                            <i class="nc-icon nc-watch-time"></i>
+                            <i class="nc-icon nc-paper"></i>
+
                             <p>Tasks</p>
                         </a>
                     </li>
