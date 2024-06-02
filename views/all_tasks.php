@@ -87,24 +87,28 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
     <div class="wrapper ">
         <div class="sidebar" data-color="white" data-active-color="danger">
             <div class="logo">
-                <a class="simple-text logo-mini">
-                </a>
-                <a href="Admin.php" class="simple-text logo-normal">
+                <!-- <a class="simple-text logo-mini"> -->
+                <!-- </a> -->
+                <a href="" class="simple-text logo-normal">
+                    <img src="https://cdn.discordapp.com/attachments/1239877130016264203/1246494735955398756/erta-logo.png?ex=665c982f&is=665b46af&hm=37da24a2c8e62d1df181f3041a913d796ff77b270f56268bd5996b06f7b9ec37&" alt="" style="width: 50px; height: auto;">
                     Manage Mate
                 </a>
+
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active ">
                         <a href="all_tasks.php">
-                            <i class="nc-icon nc-paper"></i>
+                            <i class="nc-icon nc-layout-11"></i>
+
 
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li class="active ">
                         <a href="manager_dashboard.php">
-                            <i class="nc-icon nc-watch-time"></i>
+                            <i class="nc-icon nc-paper"></i>
+
                             <p>Tasks</p>
                         </a>
                     </li>
