@@ -6,6 +6,8 @@ try {
   $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $stmt2 = $conn->query("SELECT * FROM tasks");
   $tasks = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+  $stmt3 = $conn->query("SELECT * FROM notifications");
+  $notifications = $stmt3->fetchAll(PDO::FETCH_ASSOC);
   $userCount = count($users);
   $tasksCount = count($tasks);
 
@@ -130,9 +132,11 @@ try {
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <?php foreach ($notifications as $notification) : ?>
+                      <a class="dropdown-item" href="detailedNotifications.php?notificationId=<?php echo $notification['id']; ?>" ><?php echo $notification['name']; ?></a>
+                  <?php endforeach; ?>
+
+
                 </div>
               </li>
             </ul>

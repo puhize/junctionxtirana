@@ -94,27 +94,38 @@
       </div>
 
 <!-- Notification part -->
+<!-- Notification part -->
 <?php
 require '../config/config.php';
 include_once('notification-logic.php');
 
-$sql = "SELECT * FROM notifications WHERE id=:id"; // Changed to match the parameter name
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(":id", $notificationId); // Corrected parameter name
-$stmt->execute();
-$detailedNotifications = $stmt->fetchAll();
+try {
+    $sql = "SELECT * FROM notifications"; // removed WHERE clause for fetching all notifications
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $detailedNotifications = $stmt->fetchAll();
 
-foreach ($detailedNotifications as $detailedNotification) { 
+    if ($detailedNotifications) {
+        foreach ($detailedNotifications as $detailedNotification) { 
 ?>
-<div class="card" style="width: calc(33.33% - 15px); margin-bottom: 15px;">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $detailedNotification['name']; ?></h5>
-    <p class="card-text"><?php echo $detailedNotification['task_id']; ?></p>
-    <p class="card-text"><?php echo $detailedNotification['employee_id']; ?></p>
-    <p class="card-text"><?php echo $detailedNotification['description']; ?></p>
-  </div>
-</div>
-<?php } ?>
+            <div class="card" style="width: calc(33.33% - 15px); margin-bottom: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $detailedNotification['name']; ?></h5>
+                    <p class="card-text"><?php echo $detailedNotification['task_id']; ?></p>
+                    <p class="card-text"><?php echo $detailedNotification['employee_id']; ?></p>
+                    <p class="card-text"><?php echo $detailedNotification['description']; ?></p>
+                </div>
+            </div>
+<?php 
+        }
+    } else {
+        echo "<p>No notifications found.</p>";
+    }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
 
 
       <!-- Footer -->
