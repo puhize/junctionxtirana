@@ -8,6 +8,7 @@ if(!isset($_SESSION['user'])){
 }
 
 $user = $_SESSION['user'];
+$userRole = $user['role'];
 
 
 if($user['role']=='manager' || $user['role']=='admin'){
@@ -24,4 +25,8 @@ if($user['role']!='manager'){
 $stmt->execute();
 $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
 ?>
+<script>
+    var role = "<?php echo $userRole; ?>";
+</script>
