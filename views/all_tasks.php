@@ -57,13 +57,37 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
 
 
 ?>
-<?php include('includes/header.php');?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1239877130016264203/1246494735955398756/erta-logo.png?ex=665c982f&is=665b46af&hm=37da24a2c8e62d1df181f3041a913d796ff77b270f56268bd5996b06f7b9ec37&">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Manage Mate
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/paper-dashboard.css" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<?php include('includes/header.php'); ?>
 
 
 <body>
 
     <div class="wrapper ">
-    <?php include('includes/sidebar.php'); ?>
+        <?php include('includes/sidebar.php'); ?>
         <div class="main-panel" style="height: 100vh;">
             <?php include('includes/navbar.php'); ?>
             <style>

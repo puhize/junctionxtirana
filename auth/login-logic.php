@@ -28,7 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
                 if ($user['role'] == 'manager') {
                     header("Location: ../views/manager_dashboard.php");
-                } else {
+                } 
+                else if($user['role'] == 'admin'){
+                    header("Location: ../dashboards/Admin.php");
+                }
+                else {
                     header("Location: ../views/e-dashboard.php");
                 }
                 exit();

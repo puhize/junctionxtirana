@@ -8,7 +8,9 @@ require "../config/config.php";
 ?>
 
 <head>
+<link rel="icon" type="image/png" href="../assets/img/erta-logo.png">
   <link href="../assets/css/login.css" rel="stylesheet">
+
 </head>
 
 <body>

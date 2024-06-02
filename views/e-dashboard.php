@@ -8,6 +8,8 @@ include('includes/header.php');
 $sql = "SHOW COLUMNS FROM tasks WHERE Field = 'status'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
+$stmt3 = $conn->query("SELECT * FROM notifications");
+  $notifications = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 
 // Fetch the column information
@@ -24,49 +26,75 @@ if ($columnInfo) {
 
 
 ?>
-<?php include('includes/header.php');?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="100x100" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1239877130016264203/1246494735955398756/erta-logo.png?ex=665c982f&is=665b46af&hm=37da24a2c8e62d1df181f3041a913d796ff77b270f56268bd5996b06f7b9ec37&">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Manage Mate
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/paper-dashboard.css" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+
+<?php include('includes/header.php'); ?>
+
 <body>
     <div class="wrapper ">
-    <?php include('includes/sidebar.php'); ?>
+        <?php include('includes/sidebar.php'); ?>
         <div class="main-panel" style="height: 100vh;">
-        <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-    <div class="container-fluid">
-        <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-                <button type="button" class="navbar-toggler">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                </button>
-            </div>
-            <a class="navbar-brand" href="javascript:;"><?php echo $_SESSION['user']['name'] . " " . $_SESSION['user']['surname'] ?></a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navigation">
-        <ul class="navbar-nav">
-              <li class="nav-item btn-rotate dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-bell-55"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <?php foreach ($notifications as $notification) : ?>
-                      <a class="dropdown-item" href="detailedNotifications.php?notificationId=<?php echo $notification['id']; ?>" ><?php echo $notification['name']; ?></a>
-                  <?php endforeach; ?>
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="javascript:;"><?php echo $_SESSION['user']['name'] . " " . $_SESSION['user']['surname'] ?></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="navbar-nav">
+                            <li class="nav-item btn-rotate dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="nc-icon nc-bell-55"></i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Some Actions</span>
+                                    </p>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <?php foreach ($notifications as $notification) : ?>
+                                        <a class="dropdown-item" href="detailedNotifications.php?notificationId=<?php echo $notification['id']; ?>"><?php echo $notification['name']; ?></a>
+                                    <?php endforeach; ?>
 
 
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-              </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+            </nav>
             <style>
                 .task {
                     display: flex;
