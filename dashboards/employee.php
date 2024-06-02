@@ -19,7 +19,7 @@ else if($user['role']=='employee'){
 }
 
 $stmt = $conn->prepare($sql);
-if($user['role']!='manager'){
+if($user['role']!='manager' && $user['role']!='admin'){
     $stmt->bindParam(':user_id',$user['id']);
 }
 $stmt->execute();

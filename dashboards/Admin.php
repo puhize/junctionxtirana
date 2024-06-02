@@ -70,7 +70,7 @@ try {
             </a>
           </li>
           <li>
-            <a href="../views/employee_dashboard.php">
+            <a href="../views/e-dashboard.php">
               <i class="nc-icon nc-paper"></i>
 
               <p> Tasks</p>

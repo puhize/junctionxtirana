@@ -19,7 +19,12 @@ $userRole = $_SESSION['user']['role'];
             <li class="<?= basename($_SERVER['PHP_SELF']) == 'manager_dashboard.php' ? 'active' : '' ?>"><a href="manager_dashboard.php"><i class="nc-icon nc-watch-time"></i><p>Dashboard</p></a></li>
             <li class="<?= basename($_SERVER['PHP_SELF']) == 'e-dashboard.php' ? 'active' : '' ?>"><a href="e-dashboard.php"><i class="nc-icon nc-paper"></i><p>Tasks</p></a></li>
             <li class="<?= basename($_SERVER['PHP_SELF']) == 'reports_dashboard.php' ? 'active' : '' ?>"><a href="reports_dashboard.php"><i class="nc-icon nc-single-copy-04"></i><p>Reports</p></a></li>
-            <?php }?>
+            <?php } else if($userRole == 'admin') {?>
+                <li class="<?= basename($_SERVER['PHP_SELF']) == '../dashboards/Admin.php' ? 'active' : '' ?>"><a href="../dashboards/Admin.php"><i class="nc-icon nc-watch-time"></i><p>Dashboard</p></a></li>
+            <li class="<?= basename($_SERVER['PHP_SELF']) == 'e-dashboard.php' ? 'active' : '' ?>"><a href="e-dashboard.php"><i class="nc-icon nc-paper"></i><p>Tasks</p></a></li>
+            <li class="<?= basename($_SERVER['PHP_SELF']) == 'reports_dashboard.php' ? 'active' : '' ?>"><a href="reports_dashboard.php"><i class="nc-icon nc-single-copy-04"></i><p>Reports</p></a></li>
+                <?php } ?>
+            
             <li><a href="../auth/logout-logic.php"><i class="nc-icon nc-button-power"></i><p>Logout</p></a></li>
         </ul>
     </div>
