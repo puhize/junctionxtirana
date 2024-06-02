@@ -4,6 +4,7 @@ session_start();
 include('../dashboards/employee.php');
 include('../config/config.php');
 include('includes/header.php');
+include('../task_manager/getEnums.php');
 
 $sql = "SHOW COLUMNS FROM tasks WHERE Field = 'status'";
 $stmt = $conn->prepare($sql);
@@ -19,6 +20,17 @@ if ($columnInfo) {
 
     // Output the enum values
 }
+
+$userSql = "SELECT * FROM users WHERE role='employee'";
+$userStmt = $conn->prepare($userSql);
+$userStmt->execute();
+$employees = $userStmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$priorities = getEnumValues($conn, 'tasks', 'priority');
+
+
+
 
 
 
@@ -185,51 +197,63 @@ if ($columnInfo) {
                                                         <div class="modal-body">
                                                             <!-- Task 1.1 details go here -->
 
-
+                                                            <form method="POST" name="editStatus" action="../task_manager/update_task.php">
+                                                            <input type="hidden" name="taskId" id="editTaskIdInput" value="<?php echo $task['id']; ?>">
                                                             <div class="mb-3">
                                                                 <label for="title" class="form-label">Title:</label>
-                                                                <p class="form-control" name="title" id="title"> <?php echo $task['title']; ?></p>
+                                                                <input type="text" class="form-control" name="title" id="title" value=" <?php echo $task['title']; ?>">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="description" class="form-label">Description:</label>
-
-                                                                <p class="form-control" id="description" name="description"><?php echo $task['description']; ?></p>
+                                                                <input type="text"  class="form-control" id="description" name="description" value="<?php echo $task['description']; ?>">
+                                                               
 
                                                             </div>
 
-                                                            <form method="POST" name="editStatus" action="edit_status.php">
-                                                                <div class="mb-3">
-                                                                    <input type="hidden" name="id" id="editTaskIdInput" value="<?php echo $task['id']; ?>">
+                                                              <div class="mb-3">
+                                                                   
                                                                     <label for="status" class="form-label">Status:</label>
-                                                                    <select class="form-select" id="status_active" name="status_active">
-                                                                        <option value="backlog">Backlog</option>
-                                                                        <option value="in_progress">In Progress</option>
-                                                                        <option value="in_review">In Review</option>
-                                                                        <option value="ready_for_schedule">Ready for Schedule</option>
-                                                                        <option value="scheduled">Scheduled</option>
-                                                                        <option value="done">Done</option>
+                                                                    <select class="form-select" id="status_active" name="status-active">
+                                                                        <?php foreach($enumValues as $status) {?>
+                                                                        <option value="<?php echo $task['status']; ?>"><?php echo $status; ?></option>
+                                                                        <?php }?>
+                                                                       
                                                                     </select>
                                                                 </div>
-                                                                <button type="submit" class="btn btn-primary" name="submit">Set status</button>
-                                                            </form>
+                                                               
 
                                                             <div class="mb-3">
                                                                 <label for="priority" class="form-label">Priority:</label>
-                                                                <select class="form-select" id="priority" name="priority" readonly>
-                                                                    <option value="<?php echo $task['priority']; ?>"><?php echo $task['priority']; ?></option>
-                                                                </select>
+                                                                <select class="form-select" id="priority" name="priority">
+                                            <?php  foreach ($priorities as $priority) : ?>
+                                                <option><?php echo $priority; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                                             </div>
                                                             <?php if ($task['deadline'] !== null) : ?>
                                                                 <div class="mb-3">
                                                                     <label for="deadline" class="form-label">Deadline:</label>
-                                                                    <p class="form-control" id="deadline" name="deadline"><?php echo $task['deadline']; ?></p>
+                                                                   
+                                                                    <input type="date" class="form-control" id="deadline" name="deadline" value="<?php echo $task['deadline']; ?>">
                                                                 </div>
                                                             <?php endif; ?>
+
+                                                            <div class="mb-3">
+                                            <label for="assigned_to" class="form-label">Assigned To:</label>
+                                            <select class="form-select" id="assigned_to" name="assigned_to">
+                                                <?php foreach ($employees as $employee) : ?>
+                                                    <option value="<?php echo $employee['id']; ?>" <?php echo ($task['assigned_to'] == $employee['id']) ? 'selected' : ''; ?>><?php echo $employee["name"]; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                                            
 
 
 
                                                         </div>
                                                         <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary" name="submit" style="background-color: #00344F !important;">Set status</button>
+                                                            </form>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
