@@ -57,29 +57,7 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
 
 
 ?>
-
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-        Manage Mate
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/paper-dashboard.css" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/demo/demo.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
+<?php include('includes/header.php');?>
 
 
 <body>
@@ -325,7 +303,7 @@ $priorities = getEnumValues($conn, 'tasks', 'priority');
                                             <td><?= $task['deadline'] ?></td>
                                             <td><?= $task['assigned_to'] ?></td>
                                             <td class="action-links">
-                                                <form method="post" action="edit_tasks.php">
+                                                <form method="post" action="../task_manager/edit_tasks.php">
                                                     <input type="hidden" name="id" value="<?= $task['id'] ?>">
                                                     <a href='../task_manager/delete_task.php?id=<?= $task['id'] ?>' class="btn btn-sm btn-primary edit-btn">Delete</a>
                                                     <button type="button" class="btn btn-sm btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editTaskModal<?= $task['id'] ?>" data-id="<?= $task['id'] ?>">Edit</button>

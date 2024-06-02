@@ -23,31 +23,7 @@ if ($columnInfo) {
 
 
 ?>
-
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-        Manage Mate
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/paper-dashboard.css" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../assets/demo/demo.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
-
-
+<?php include('includes/header.php');?>
 <body>
     <div class="wrapper ">
         <div class="sidebar" data-color="white" data-active-color="danger">
@@ -183,9 +159,6 @@ if ($columnInfo) {
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <!-- Task 1.1 details go here -->
-
-
                                                             <div class="mb-3">
                                                                 <label for="title" class="form-label">Title:</label>
                                                                 <p class="form-control" name="title" id="title"> <?php echo $task['title']; ?></p>
@@ -197,7 +170,7 @@ if ($columnInfo) {
 
                                                             </div>
 
-                                                            <form method="POST" name="editStatus" action="edit_status.php">
+                                                            <form method="POST" name="editStatus" action="../task_manager/edit_status.php">
                                                                 <div class="mb-3">
                                                                     <input type="hidden" name="id" id="editTaskIdInput" value="<?php echo $task['id']; ?>">
                                                                     <label for="status" class="form-label">Status:</label>
@@ -244,9 +217,6 @@ if ($columnInfo) {
                         </div>
                     <?php  } ?>
                 </div>
-
-
-
 
                 <footer class="footer" style="position: absolute; bottom: 0; width: -webkit-fill-available;">
                     <div class="container-fluid">
